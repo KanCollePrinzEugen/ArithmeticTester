@@ -1,4 +1,4 @@
-SET NAMES utf-8;
+SET NAMES 'utf8';
 CREATE DATABASE arithmetic_tester_schema;
 USE arithmetic_tester_schema;
 CREATE TABLE child
