@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ArithmeticTester">
+    <output-path>$PROJECT_DIR$/target/artifacts/ArithmeticTester</output-path>
+    <root id="root">
+      <element id="dir-copy" path="$PROJECT_DIR$/WebContent" />
+      <element id="javaee-facet-resources" facet="ArithmeticTester/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ArithmeticTester" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mysql-connector-java-8.0.22.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
