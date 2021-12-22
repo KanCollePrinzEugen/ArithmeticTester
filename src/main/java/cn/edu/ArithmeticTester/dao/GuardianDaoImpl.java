@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  * @author prinz
  */
-public class GuardianDaoImp implements UserDao{
+public class GuardianDaoImpl implements UserDao{
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -31,8 +31,7 @@ public class GuardianDaoImp implements UserDao{
                 String getName = resultSet.getString(2);
                 int getPassword = resultSet.getInt(3);
 
-                Guardian guardian = new Guardian(getUser, getName, getPassword);
-                return guardian;
+                return new Guardian(getUser, getName, getPassword);
             } else {
                 //无法获取返回空值
                 return null;
@@ -44,19 +43,24 @@ public class GuardianDaoImp implements UserDao{
     }
 
     @Override
-    public int addUser(String user, String name, String password) {
+    public int addUser(String user, String name,String password) {
         try {
             //连接数据库
             Class.forName(DataBaseTools.DRIVER_CLASS);
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
             //执行添加语句
-            String sql = "INSERT INTO guardian VALUES("+user+", '"+name+"', '"+password+"')";
+            String sql = "INSERT INTO guardian VALUES('"+user+"', '"+name+"', '"+password+"')";
             System.out.println(sql);
             return statement.executeUpdate(sql);
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
+        return 0;
+    }
+
+    @Override
+    public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword) {
         return 0;
     }
 }

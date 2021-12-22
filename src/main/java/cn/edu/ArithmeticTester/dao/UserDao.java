@@ -18,7 +18,7 @@ public interface UserDao {
 
     /**
      *  将获取的新用户信息存储在数据库
-     *  用于账户注册
+     *  用于非学员账户注册
      * @param user 识别用户的唯一用户名
      * @param name 用户姓名
      * @param password 用户密码
@@ -26,4 +26,16 @@ public interface UserDao {
      */
 
     public int addUser(String user, String name, String password);
+
+    /**
+     *  将获取的新用户信息存储在数据库
+     *  用于学员账户注册，需要有家长账户验证
+     * @param user
+     * @param name
+     * @param password
+     * @param guardianUser
+     * @param guardianPassword
+     * @return
+     */
+    public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword);
 }

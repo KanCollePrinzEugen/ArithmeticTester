@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  * @author prinzeugen
  */
-public class StudentDaoImp implements UserDao{
+public class StudentDaoImpl implements UserDao{
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
@@ -32,8 +32,7 @@ public class StudentDaoImp implements UserDao{
                 int getPassword = resultSet.getInt(3);
                 String getGuardian = resultSet.getString(4);
 
-                Student student = new Student(getUser, getName, getPassword, getGuardian);
-                return student;
+                return new Student(getUser, getName, getPassword, getGuardian);
             } else {
                 //无法获取返回空值
                 return null;
@@ -45,19 +44,24 @@ public class StudentDaoImp implements UserDao{
     }
 
     @Override
-    public int addUser(String user, String name, String password) {
+    public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword) {
         try {
             //连接数据库
             Class.forName(DataBaseTools.DRIVER_CLASS);
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
             //执行添加语句
-            String sql = "INSERT INTO child VALUES("+user+", '"+name+"', '"+password+"')";
+            String sql = "INSERT INTO child VALUES('"+user+"', '"+name+"', '"+password+"', '"+guardianUser+"')";
             System.out.println(sql);
             return statement.executeUpdate(sql);
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
+        return 0;
+    }
+
+    @Override
+    public int addUser(String user, String name, String password) {
         return 0;
     }
 }
