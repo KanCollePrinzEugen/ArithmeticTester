@@ -13,6 +13,7 @@
         <servlet-name>VerifyCodeServlet</servlet-name>
         <url-pattern>/VerifyCodeServlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>cn.edu.ArithmeticTester.servlet.RegisterServlet</servlet-class>
@@ -22,4 +23,21 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>cn.edu.ArithmeticTester.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GenerateForumServlet</servlet-name>
+        <servlet-class>cn.edu.ArithmeticTester.servlet.GenerateForumServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GenerateForumServlet</servlet-name>
+        <url-pattern>/GenerateForumServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

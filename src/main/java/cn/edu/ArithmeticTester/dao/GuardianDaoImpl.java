@@ -22,7 +22,7 @@ public class GuardianDaoImpl implements UserDao{
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
             //执行查询语句
-            String sql = "SELECT * FROM guardian WHERE id = '"+ user +"' AND pwd = + '"+password+"'";
+            String sql = "SELECT * FROM guardian WHERE id = '"+ user +"' AND pwd = '"+password+"'";
             System.out.println(sql);
             resultSet = statement.executeQuery(sql);
             //如果可以获取，则包装获取到的家长类

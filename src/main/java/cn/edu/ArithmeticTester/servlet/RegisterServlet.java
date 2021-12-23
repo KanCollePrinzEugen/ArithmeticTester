@@ -32,18 +32,19 @@ public class RegisterServlet extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("pwd");
         String guardianPassword = req.getParameter("guardianPassword");
+        String accountType = req.getParameter("account");
         String verifyCode = req.getParameter("verifyCode");
-        String sessionCacheKey = req.getParameter("sessionCacheKey");
-
+        String sessionCacheKey = (String) req.getSession().getAttribute("sessionCacheKey");
+        System.out.println(sessionCacheKey);
         //提交的缓存为空则为重复提交
-        if (sessionCacheKey != null) {
+        if (sessionCacheKey == null) {
             //存放request作用域
             req.setAttribute("msg", "请勿重复提交");
             //请求转发
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
             return;
         }
-
+        System.out.println("sessionCacheKey:"+sessionCacheKey);
         //验证码输入错误
         if (!sessionCacheKey.equalsIgnoreCase(verifyCode)) {
             //存放request作用域
@@ -52,9 +53,13 @@ public class RegisterServlet extends HttpServlet {
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
             return;
         }
-
-        int result = 0;
-        result = guardianService.register(user,name ,password);
+        System.out.println("accountType:" + accountType);
+        int result;
+        if ("student".equals(accountType)){
+            result = studentService.registerWithGuardian(user,name ,password, guardianUser, guardianPassword);
+        } else {
+            result = guardianService.register(user,name ,password);
+        }
 
         if(result > 0){
             //注册成功，返回首页

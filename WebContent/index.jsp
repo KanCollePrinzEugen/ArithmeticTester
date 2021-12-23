@@ -10,58 +10,60 @@
 <body>
 <div class="content">
   <h1>欢迎使用算术练习系统</h1>
-  <table>
-    <tr>
-      <td>
-        <p>账号：</p>
-      </td>
-      <td>
-        <label>
-          <input class="textInput" type="text" name="user">
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>密码：</p>
-      </td>
-      <td>
-        <label>
-          <input class="textInput" type="text" name="pwd">
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>账户类型：</p>
-      </td>
-      <td>
-        <label>
-          <select class="accountSelector" name="account">
-            <option value="guardian">监护人</option>
-            <option value="student">学员</option>
-            <option value="admin">管理员</option>
-          </select>
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>验证码：</p>
-      </td>
-      <td>
-        <label>
-          <input class="verifyCodeInput" type="text" name="verifyCode"/>
-          <img src="VerifyCodeServlet" class="verifyCode"  alt="verifyCode"/>
-        </label>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input class="submitButton" type="submit" value="登录">
-      </td>
-    </tr>
-  </table>
+    <form method="post" action="LoginServlet">
+        <table>
+            <tr>
+                <td>
+                    <p>账号：</p>
+                </td>
+                <td>
+                    <label>
+                        <input class="textInput" type="text" name="user">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>密码：</p>
+                </td>
+                <td>
+                    <label>
+                        <input class="textInput" type="text" name="pwd">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>账户类型：</p>
+                </td>
+                <td>
+                    <label>
+                        <select class="accountSelector" name="account" id="accountSelector">
+                            <option value="guardian">监护人</option>
+                            <option value="student">学员</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>验证码：</p>
+                </td>
+                <td>
+                    <label>
+                        <input class="verifyCodeInput" type="text" name="verifyCode"/>
+                        <img src="VerifyCodeServlet" class="verifyCode" alt="verifyCode"/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input class="submitButton" type="submit" value="登录">
+                </td>
+            </tr>
+        </table>
+    </form>
   <a href="register.jsp">新用户注册</a>
 </div>
 </body>

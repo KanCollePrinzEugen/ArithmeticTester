@@ -31,10 +31,10 @@ public class LoginServlet extends HttpServlet {
         String passwordConf = request.getParameter("pwdConf");
         String verifyCode = request.getParameter("verifyCode");
         String accountType = request.getParameter("account");
-        String sessionCacheKey = request.getParameter("sessionCacheKey");
+        String sessionCacheKey = (String) request.getSession().getAttribute("sessionCacheKey");
 
         //提交的缓存为空则为重复提交
-        if (sessionCacheKey != null) {
+        if (sessionCacheKey == null) {
             //存放request作用域
             request.setAttribute("msg", "请勿重复提交");
             //请求转发
@@ -55,10 +55,10 @@ public class LoginServlet extends HttpServlet {
         Student student = null;
         Guardian guardian = null;
         switch (accountType) {
-            case "监护人":
+            case "guardian":
                 guardian = (Guardian)guardianService.login(user, password);
                 break;
-            case "学员":
+            case "student":
                 student = (Student)studentService.login(user, password);
                 break;
         }
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
         } else if (guardian != null){
             HttpSession session = request.getSession();
             session.setAttribute("guardian", guardian);
-            response.sendRedirect("studentHome.jsp");
+            response.sendRedirect("guardianHome.jsp");
         } else{
             request.setAttribute("msg", "账号或密码错误");
             request.getRequestDispatcher("/index.jsp").forward(request, response);

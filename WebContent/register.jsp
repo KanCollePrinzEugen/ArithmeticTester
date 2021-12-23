@@ -9,7 +9,7 @@
     <script type="text/javascript" src="script/register.js"></script>
 </head>
 <body>
-    <div class="content">
+    <div class="content" id="content">
         <%
             String msg = (String)request.getAttribute("msg");
             if(msg != null){
@@ -20,7 +20,7 @@
         %>
         <a href="index.jsp" class="back">返回</a>
         <h1>新用户注册</h1>
-        <form action="RegisterServlet" method="post">
+        <form action="RegisterServlet" method="post" id="registerForm">
             <table>
                 <tr>
                     <td>
@@ -59,6 +59,40 @@
                     <td>
                         <label>
                             <input class="textInput" type="password" name="pwdConf">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>账户类型：</p>
+                    </td>
+                    <td>
+                        <label>
+                            <select class="accountSelector" name="account" onchange="accountSelected(this.value)">
+                                <option value="student">学员</option>
+                                <option value="guardian">监护人</option>
+                                <option value="admin">管理员</option>
+                            </select>
+                        </label>
+                    </td>
+                </tr>
+                <tr id="guardianUser">
+                    <td>
+                        <p>家长账号：</p>
+                    </td>
+                    <td>
+                        <label>
+                            <input class="textInput" type="text" name="guardianUser">
+                        </label>
+                    </td>
+                </tr>
+                <tr id="guardianPassword">
+                    <td>
+                        <p>家长密码：</p>
+                    </td>
+                    <td>
+                        <label>
+                            <input class="textInput" type="password" name="guardianPassword">
                         </label>
                     </td>
                 </tr>

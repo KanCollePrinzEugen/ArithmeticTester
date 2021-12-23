@@ -45,6 +45,7 @@ public class VerifyCodeServlet extends HttpServlet {
             g.fillRect(random.nextInt(width),random.nextInt(height),1,1);
         }
         String tempStr = builder.toString();
+        System.out.println("tempStr:"+tempStr);
         req.getSession().setAttribute("sessionCacheKey",tempStr);
         ImageIO.write(image, "jpg", resp.getOutputStream());
     }

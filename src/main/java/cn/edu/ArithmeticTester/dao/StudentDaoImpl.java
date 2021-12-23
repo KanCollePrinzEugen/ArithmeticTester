@@ -51,9 +51,16 @@ public class StudentDaoImpl implements UserDao{
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
             //执行添加语句
-            String sql = "INSERT INTO child VALUES('"+user+"', '"+name+"', '"+password+"', '"+guardianUser+"')";
+            String sql = "SELECT * FROM guardian WHERE id = '"+ guardianUser +"' AND pwd = '"+guardianPassword+"'";
+            resultSet = statement.executeQuery(sql);
             System.out.println(sql);
-            return statement.executeUpdate(sql);
+            if (resultSet.next()) {
+                sql = "INSERT INTO child VALUES('"+user+"', '"+name+"', '"+password+"', '"+guardianUser+"')";
+                System.out.println(sql);
+                return statement.executeUpdate(sql);
+            } else {
+                return 0;
+            }
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
