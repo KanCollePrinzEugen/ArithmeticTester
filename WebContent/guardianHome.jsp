@@ -31,6 +31,7 @@
             <%
                 if (studentWithGuardian == null){
             %>
+                <p>您还没有已连接的孩子账号</p>
             <%
                 } else {
                   for (User student : studentWithGuardian){
@@ -47,7 +48,7 @@
             <%
                   }
                 }
-            %>
+            %></div>
         </div>
     </div>
 </body>

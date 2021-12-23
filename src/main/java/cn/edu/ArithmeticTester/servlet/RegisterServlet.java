@@ -54,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
             return;
         }
-        if(password!=pwdConf){
+        if(!password.equals(pwdConf)){
             //存放request作用域
             req.setAttribute("msg", "两次密码不一致");
             //请求转发
@@ -72,7 +72,7 @@ public class RegisterServlet extends HttpServlet {
         if(result > 0){
             //注册成功，返回首页
             req.setAttribute("msg", "注册成功！");
-            resp.sendRedirect("index.jsp");
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
         } else {
             req.setAttribute("msg", "注册失败！");
             //请求转发
