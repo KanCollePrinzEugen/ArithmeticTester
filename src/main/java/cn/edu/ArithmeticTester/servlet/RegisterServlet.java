@@ -71,10 +71,12 @@ public class RegisterServlet extends HttpServlet {
 
         if(result > 0){
             //注册成功，返回首页
+            req.setAttribute("msg", "注册成功！");
             resp.sendRedirect("index.jsp");
         } else {
-            //注册失败，刷新页面
-            resp.sendRedirect("register.jsp");
+            req.setAttribute("msg", "注册失败！");
+            //请求转发
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
         }
     }
 }

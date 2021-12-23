@@ -49,7 +49,6 @@
                         <select class="accountSelector" name="account" id="accountSelector">
                             <option value="guardian">监护人</option>
                             <option value="student">学员</option>
-                            <option value="admin">管理员</option>
                         </select>
                     </label>
                 </td>
