@@ -1,6 +1,7 @@
 <%@ page import="cn.edu.ArithmeticTester.entity.Student" %>
 <%@ page import="cn.edu.ArithmeticTester.entity.Forum" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.math.BigDecimal" %><%--
   Created by IntelliJ IDEA.
   User: prinzeugen
   Date: 2021/12/23
@@ -24,13 +25,15 @@
     Integer right = (Integer)session.getAttribute("right");
     Integer mistake = (Integer)session.getAttribute("mistake");
     List<Forum> forms = (List<Forum>)session.getAttribute("forms");
+    BigDecimal bigDecimal = new BigDecimal(accuracy*100);
+    bigDecimal = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
 %>
   <div class="content">
       <h1><%=studentName%>的测试结果</h1>
       <p>总题数：<%=generateNum%></p>
       <p>答对：<%=right%></p>
       <p>答错：<%=mistake%></p>
-      <p>正确率：<%=accuracy*100%>%</p>
+      <p>正确率：<%=bigDecimal%>%</p>
       <button class="submitButton">
           <a href="newTest.jsp" style="text-decoration:none; color:white ;">开始新测试</a>
       </button>
@@ -71,10 +74,10 @@
               <td>
                   <p>
                       <script>
-                          if (result == answerInput[i]){
-                              document.write('<svg t="1640263664051" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2033" width="50" height="50"><path d="M219.952 512.576l210.432 210.432-45.248 45.256-210.432-210.432z" p-id="2034"></path><path d="M799.672 262.264l45.256 45.256-460.464 460.464-45.256-45.256z" p-id="2035"></path></svg>')
+                          if (result == <%=answerInput[i]%>){
+                              document.write('✔')
                           } else {
-                              document.write('<svg t="1640264046247" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2833" width="50" height="50"><path d="M806.4 263.2l-45.6-45.6L512 467.2 263.2 217.6l-45.6 45.6L467.2 512 217.6 760.8l45.6 45.6L512 557.6l248.8 248.8 45.6-45.6L557.6 512z" p-id="2834"></path></svg>')
+                              document.write('✘')
                           }
                       </script>
                   </p>

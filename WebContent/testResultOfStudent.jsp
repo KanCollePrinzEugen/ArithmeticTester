@@ -1,5 +1,6 @@
 <%@ page import="cn.edu.ArithmeticTester.entity.TestResult" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.math.BigDecimal" %><%--
   Created by IntelliJ IDEA.
   User: prinzeugen
   Date: 2021/12/23
@@ -43,6 +44,8 @@
                             int forumNum = testResult.getForumNum();
                             int mistake = testResult.getMistake();
                             double accuracy = testResult.getAccuracy();
+                            BigDecimal bigDecimal = new BigDecimal(accuracy*100);
+                            bigDecimal = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
                             System.out.println("id="+id);
                             System.out.println("forumNum="+forumNum);
                             System.out.println("mistake="+mistake);
@@ -59,7 +62,7 @@
                         <p><%=mistake%></p>
                     </td>
                     <td>
-                        <p><%=accuracy*100%>分</p>
+                        <p><%=bigDecimal%>分</p>
                     </td>
                 </tr>
                 <%
