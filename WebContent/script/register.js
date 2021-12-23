@@ -1,7 +1,3 @@
-function passwordConfirmCheck(){
-
-}
-
 function guardianSelected() {
     let guardianUser = document.getElementById("guardianUser")
     let guardianPassword = document.getElementById("guardianPassword")

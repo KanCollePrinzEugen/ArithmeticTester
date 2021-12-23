@@ -10,6 +10,7 @@ import cn.edu.ArithmeticTester.service.UserService;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author prinzeugen
@@ -53,10 +54,12 @@ public class LoginServlet extends HttpServlet {
 
         //检查账户类型并验证账户信息
         Student student = null;
+        ArrayList<User> studentWithGuardian = new ArrayList<>();
         Guardian guardian = null;
         switch (accountType) {
             case "guardian":
                 guardian = (Guardian)guardianService.login(user, password);
+                studentWithGuardian = guardianService.getStudentWithGuardian(user);
                 break;
             case "student":
                 student = (Student)studentService.login(user, password);
@@ -66,10 +69,13 @@ public class LoginServlet extends HttpServlet {
         if (student != null) {
             HttpSession session = request.getSession();
             session.setAttribute("student", student);
+            this.getServletContext().setAttribute("studentName", student.getName());
+            this.getServletContext().setAttribute("studentUserName", student.getUsername());
             response.sendRedirect("studentHome.jsp");
         } else if (guardian != null){
             HttpSession session = request.getSession();
             session.setAttribute("guardian", guardian);
+            session.setAttribute("studentWithGuardian", studentWithGuardian);
             response.sendRedirect("guardianHome.jsp");
         } else{
             request.setAttribute("msg", "账号或密码错误");

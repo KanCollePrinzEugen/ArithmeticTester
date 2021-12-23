@@ -2,6 +2,8 @@ package cn.edu.ArithmeticTester.dao;
 
 import cn.edu.ArithmeticTester.entity.User;
 
+import java.util.ArrayList;
+
 /**
  * @author prinzeugen
  */
@@ -38,4 +40,11 @@ public interface UserDao {
      * @return
      */
     public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword);
+
+    /**
+     *
+     * @param guardian
+     * @return
+     */
+    public ArrayList<User> getUsersWithGuardian(String guardian);
 }

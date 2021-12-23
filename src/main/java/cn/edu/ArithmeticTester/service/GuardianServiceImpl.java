@@ -4,6 +4,8 @@ import cn.edu.ArithmeticTester.dao.GuardianDaoImpl;
 import cn.edu.ArithmeticTester.dao.UserDao;
 import cn.edu.ArithmeticTester.entity.User;
 
+import java.util.ArrayList;
+
 /**
  * @author prinzeugen
  */
@@ -22,5 +24,10 @@ public class GuardianServiceImpl implements UserService{
     @Override
     public User login(String user, String password) {
         return dao.getUser(user, password);
+    }
+
+    @Override
+    public ArrayList<User> getStudentWithGuardian(String guardianUser) {
+        return dao.getUsersWithGuardian(guardianUser);
     }
 }

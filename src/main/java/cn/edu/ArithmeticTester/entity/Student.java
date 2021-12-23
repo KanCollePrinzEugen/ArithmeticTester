@@ -15,4 +15,9 @@ public class Student extends User{
     public String getGuardian() {
         return guardian;
     }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 }

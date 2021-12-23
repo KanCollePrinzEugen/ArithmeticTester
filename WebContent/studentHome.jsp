@@ -11,16 +11,21 @@
 <head>
     <meta charset="UTF-8">
     <title>学生主页</title>
+    <link rel="stylesheet" href="css/studentHome.css">
+    <link rel="stylesheet" href="css/button.css">
 </head>
 <body>
 <%
     Student student = (Student)session.getAttribute("student");
     String studentName = student.getName();
 %>
-    <h1>欢迎您！<%= studentName%></h1>
     <div class="content">
-        <button>
-            <a href="newTest.jsp">开始新测试</a>
+    <h1>欢迎您！<%= studentName%></h1>
+        <button class="submitButton">
+            <a href="newTest.jsp" style="text-decoration:none; color:white ;">开始新测试</a>
+        </button>
+        <button class="submitButton">
+            <a onclick="location.href='LogoutServlet'" style="text-decoration:none; color:white ;">退出登录</a>
         </button>
     </div>
 </body>

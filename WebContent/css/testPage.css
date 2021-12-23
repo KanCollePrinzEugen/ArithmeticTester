@@ -1,0 +1,33 @@
+body{
+    background: url("../img/XmasBeachHuts_ZH-CN6195800613_1920x1080.jpg");
+    padding: 20px;
+}
+.content{
+    color: black;
+    position: relative;
+    top: 50px;
+    width: 450px;
+    height: auto;
+    /*height: 650px;*/
+    margin:20px auto;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px #363636;
+    text-align: center;
+    padding: 20px;
+}
+.answerText{
+    width: 90px;
+    height: 30px;
+}
+.forumsBox{
+}
+.forum{
+    margin: 20px auto;
+}
+table{
+    margin: auto;
+}
+td{
+    width: 70px;
+}

@@ -44,7 +44,7 @@ public class Forum {
         }
     }
 
-    public String getOption(Integer option) {
+    public String getOption() {
         return opt;
     }
 
@@ -90,7 +90,7 @@ public class Forum {
             case 3:
                 opt = "*";
                 result = num1 * num2;
-                if (result > 200){
+                if (result > 150){
                     flag = false;
                 }
                 break;
@@ -99,7 +99,7 @@ public class Forum {
                     result = num1;
                     num1 = result * num2;
                     opt = "/";
-                    if (num1 > 200){
+                    if (num1 > 150){
                         flag = false;
                     }
                 } else {
@@ -111,6 +111,9 @@ public class Forum {
                 option = 1;
                 opt = "+";
                 result = num1 + num2;
+                if (result > 150){
+                    flag = false;
+                }
         }
     }
 
@@ -134,4 +137,6 @@ public class Forum {
         }
         return num1 + operator + num2 + "=" + result;
     }
+
+
 }

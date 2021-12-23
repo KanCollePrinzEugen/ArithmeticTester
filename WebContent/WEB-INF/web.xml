@@ -40,4 +40,31 @@
         <servlet-name>GenerateForumServlet</servlet-name>
         <url-pattern>/GenerateForumServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AnswerProcess</servlet-name>
+        <servlet-class>cn.edu.ArithmeticTester.servlet.AnswerProcess</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AnswerProcess</servlet-name>
+        <url-pattern>/AnswerProcess</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>cn.edu.ArithmeticTester.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RecentTestResult</servlet-name>
+        <servlet-class>cn.edu.ArithmeticTester.servlet.RecentTestResult</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecentTestResult</servlet-name>
+        <url-pattern>/RecentTestResult</url-pattern>
+    </servlet-mapping>
 </web-app>

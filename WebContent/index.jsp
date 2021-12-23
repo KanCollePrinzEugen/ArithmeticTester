@@ -9,6 +9,14 @@
 </head>
 <body>
 <div class="content">
+    <%
+        String msg = (String)request.getAttribute("msg");
+        if(msg != null){
+    %>
+    <script type="text/javascript"> alert("<%=msg%>");</script>
+    <%
+        }
+    %>
   <h1>欢迎使用算术练习系统</h1>
     <form method="post" action="LoginServlet">
         <table>

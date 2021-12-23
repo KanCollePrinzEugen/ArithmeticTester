@@ -31,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
         String guardianUser = req.getParameter("guardianUser");
         String name = req.getParameter("name");
         String password = req.getParameter("pwd");
+        String pwdConf = req.getParameter("pwdConf");
         String guardianPassword = req.getParameter("guardianPassword");
         String accountType = req.getParameter("account");
         String verifyCode = req.getParameter("verifyCode");
@@ -49,6 +50,13 @@ public class RegisterServlet extends HttpServlet {
         if (!sessionCacheKey.equalsIgnoreCase(verifyCode)) {
             //存放request作用域
             req.setAttribute("msg", "验证码输入错误");
+            //请求转发
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            return;
+        }
+        if(password!=pwdConf){
+            //存放request作用域
+            req.setAttribute("msg", "两次密码不一致");
             //请求转发
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
             return;

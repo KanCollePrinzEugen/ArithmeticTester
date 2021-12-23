@@ -2,6 +2,8 @@ package cn.edu.ArithmeticTester.service;
 
 import cn.edu.ArithmeticTester.entity.User;
 
+import java.util.ArrayList;
+
 /**
  * 用于全体用户的service接口
  * @author prinzeugen
@@ -34,4 +36,11 @@ public interface UserService {
      * @return  登录成功返回相应的用户类，登录失败返回空值
      */
     public User login(String user, String password);
+
+    /**
+     *
+     * @param guardianUser
+     * @return
+     */
+    public ArrayList<User> getStudentWithGuardian(String guardianUser);
 }

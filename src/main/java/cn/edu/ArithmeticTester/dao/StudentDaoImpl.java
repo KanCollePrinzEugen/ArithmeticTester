@@ -5,6 +5,7 @@ import cn.edu.ArithmeticTester.entity.User;
 import cn.edu.ArithmeticTester.utils.DataBaseTools;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * @author prinzeugen
@@ -22,7 +23,7 @@ public class StudentDaoImpl implements UserDao{
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
             //执行查询语句
-            String sql = "SELECT * FROM child WHERE id = '"+ user +"' AND pwd = + '"+password+"'";
+            String sql = "SELECT * FROM child WHERE id = '"+ user +"' AND pwd = '"+password+"'";
             System.out.println(sql);
             resultSet = statement.executeQuery(sql);
             //如果可以获取，则包装获取到的学生类
@@ -70,5 +71,10 @@ public class StudentDaoImpl implements UserDao{
     @Override
     public int addUser(String user, String name, String password) {
         return 0;
+    }
+
+    @Override
+    public ArrayList<User> getUsersWithGuardian(String guardian) {
+        return null;
     }
 }

@@ -1,0 +1,43 @@
+body{
+    background: url("../img/XmasBeachHuts_ZH-CN6195800613_1920x1080.jpg");
+}
+.content{
+    color: black;
+    position: relative;
+    top: 150px;
+    width: 500px;
+    height: 250px;
+    margin: auto;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px #363636;
+}
+form{
+    position: relative;
+    margin: auto;
+    top: 25px;
+}
+.textInput{
+    width: 170px;
+    height: 30px;
+}
+.back{
+    position: relative;
+    right: -15px;
+    top: 15px;
+    margin-bottom: 40px;
+}
+.checkBox{
+    position: relative;
+    margin:30px auto;
+    height:30px;
+    width:250px;
+}
+.textBox{
+    height:30px;
+    width:360px;
+    margin: auto;
+}
+a{
+    text-decoration:none;
+}

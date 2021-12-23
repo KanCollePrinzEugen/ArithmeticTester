@@ -1,10 +1,13 @@
 package cn.edu.ArithmeticTester.dao;
 
 import cn.edu.ArithmeticTester.entity.Guardian;
+import cn.edu.ArithmeticTester.entity.Student;
 import cn.edu.ArithmeticTester.entity.User;
 import cn.edu.ArithmeticTester.utils.DataBaseTools;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author prinz
@@ -62,5 +65,36 @@ public class GuardianDaoImpl implements UserDao{
     @Override
     public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword) {
         return 0;
+    }
+
+    @Override
+    public ArrayList<User> getUsersWithGuardian(String guardian) {
+        try {
+            //连接数据库
+            Class.forName(DataBaseTools.DRIVER_CLASS);
+            connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
+            statement = connection.createStatement();
+            /*执行学生查询语句*/
+            String sqlSt = "SELECT * FROM child WHERE guardian = '"+guardian+"' ";
+            resultSet = statement.executeQuery(sqlSt);
+            System.out.println(sqlSt);
+            ArrayList<User> studentList = new ArrayList();
+            if (!resultSet.next()){
+                return null;
+            }
+            do{
+                String studentUserName = resultSet.getString(1);
+                String studentName = resultSet.getString(2);
+                int studentPassword = resultSet.getInt(3);
+                String guardianUser = guardian;
+
+                Student student = new Student(studentUserName, studentName, studentPassword, guardianUser);
+                studentList.add(student);
+            }while(resultSet.next());
+            return studentList;
+             } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
