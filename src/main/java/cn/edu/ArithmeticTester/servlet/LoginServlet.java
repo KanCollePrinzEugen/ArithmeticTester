@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * 处理账户登录的servlet
  * @author prinzeugen
  */
 public class LoginServlet extends HttpServlet {
@@ -57,26 +58,33 @@ public class LoginServlet extends HttpServlet {
         ArrayList<User> studentWithGuardian = new ArrayList<>();
         Guardian guardian = null;
         switch (accountType) {
+            //选择的是家长账户，将登录信息传送给家长的service
             case "guardian":
                 guardian = (Guardian)guardianService.login(user, password);
                 studentWithGuardian = guardianService.getStudentWithGuardian(user);
                 break;
+            //选择的是学生账户，将登录信息传送给学生的service
             case "student":
                 student = (Student)studentService.login(user, password);
                 break;
         }
 
+        //学生账户登录成功，跳转到学生主页
         if (student != null) {
             HttpSession session = request.getSession();
+            //传送学生账户信息
             session.setAttribute("student", student);
             this.getServletContext().setAttribute("studentName", student.getName());
             this.getServletContext().setAttribute("studentUserName", student.getUsername());
             response.sendRedirect("studentHome.jsp");
+        //家长账户登录成功，跳转到家长主页
         } else if (guardian != null){
             HttpSession session = request.getSession();
+            //传送家长账户信息
             session.setAttribute("guardian", guardian);
             session.setAttribute("studentWithGuardian", studentWithGuardian);
             response.sendRedirect("guardianHome.jsp");
+            //否则登录失败，传送信息并且回到登录页面
         } else{
             request.setAttribute("msg", "账号或密码错误");
             request.getRequestDispatcher("/index.jsp").forward(request, response);

@@ -24,7 +24,7 @@
         <%
             }
         %>
-        <a href="studentHome.jsp" class="back">我不卷了，我不卷了……</a>
+        <a href="studentHome.jsp" class="back">回到主页</a>
         <form method="post" action="GenerateForumServlet">
             <div class = "textBox">
                 <p>
@@ -52,7 +52,7 @@
                     除法
                 </label>
             </div>
-            <input type="submit" value="开卷!" class="submitButton">
+            <input type="submit" value="开始测试" class="submitButton">
         </form>
     </div>
 </body>

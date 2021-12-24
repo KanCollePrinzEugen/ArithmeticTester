@@ -11,6 +11,16 @@ import java.util.ArrayList;
  */
 public class GuardianServiceImpl implements UserService{
     UserDao dao = new GuardianDaoImpl();
+
+    /**
+     * 仅用于学生账户注册，家长service不使用
+     * @param user 识别用户的唯一用户名
+     * @param name  用户姓名
+     * @param password  用户密码
+     * @param guardianUser 监护人账户
+     * @param guardianPassword 监护人密码
+     * @return 0
+     */
     @Override
     public int registerWithGuardian(String user, String name, String password, String guardianUser, String guardianPassword) {
         return 0;

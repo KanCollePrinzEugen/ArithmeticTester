@@ -15,6 +15,7 @@
 </head>
 <body>
 <%
+    //从数据库获取指定学生的练习情况
     ArrayList<TestResult> testResults = (ArrayList<TestResult>) session.getAttribute("testResults");
     String studentName = (String) session.getAttribute("studentName");
 %>

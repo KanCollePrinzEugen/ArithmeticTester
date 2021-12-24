@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="css/testPage.css">
     <link rel="stylesheet" href="css/button.css">
     <script src="script/forumsDisplay.js"></script>
-    <script src="script/answerProcess.js"></script>
 </head>
 <body style="background: url('img/XmasBeachHuts_ZH-CN6195800613_1920x1080.jpg')">
   <%
@@ -41,6 +40,7 @@
           var option = "<%=form.getOption()%>";
           answerArr.push("<%=form.getResult()%>")
           // var result = ;
+          //将生产算式以平常的运算符号显示
           var forum = displayForum(num1, num2, option);
         </script>
         <div class="forum">

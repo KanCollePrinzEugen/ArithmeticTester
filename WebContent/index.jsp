@@ -10,6 +10,7 @@
 <body>
 <div class="content">
     <%
+        //获取从servlet得到的消息
         String msg = (String)request.getAttribute("msg");
         if(msg != null){
     %>

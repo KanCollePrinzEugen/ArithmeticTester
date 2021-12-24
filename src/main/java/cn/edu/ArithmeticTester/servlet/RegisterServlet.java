@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 处理登录的servlet
  * @author prinzeugen
  */
 public class RegisterServlet extends HttpServlet {
@@ -27,6 +28,7 @@ public class RegisterServlet extends HttpServlet {
         UserService guardianService = new GuardianServiceImpl();
         req.setCharacterEncoding("utf-8");
 
+        //获取注册信息
         String user = req.getParameter("user");
         String guardianUser = req.getParameter("guardianUser");
         String name = req.getParameter("name");
@@ -63,9 +65,11 @@ public class RegisterServlet extends HttpServlet {
         }
         System.out.println("accountType:" + accountType);
         int result;
+        //如果选择的是学生账户，将家长账户信息和学生注册信息一起传送给学生service
         if ("student".equals(accountType)){
             result = studentService.registerWithGuardian(user,name ,password, guardianUser, guardianPassword);
         } else {
+            //否则仅将注册信息传送给家长service
             result = guardianService.register(user,name ,password);
         }
 

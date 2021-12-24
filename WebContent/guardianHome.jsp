@@ -17,6 +17,9 @@
 </head>
 <body>
 <%
+    /**
+     * 在这里获取家长的名字和连接该家长的孩子账号信息
+     */
     Guardian guardian = (Guardian)session.getAttribute("guardian");
     ArrayList<User> studentWithGuardian= (ArrayList<User>)session.getAttribute("studentWithGuardian");
     String guardianName = guardian.getName();
@@ -29,11 +32,13 @@
         <div class="yourChildren">
             <h2>您的孩子</h2>
             <%
+                //当没有孩子账号连接到该家长账号时的处理
                 if (studentWithGuardian == null){
             %>
                 <p>您还没有已连接的孩子账号</p>
             <%
                 } else {
+                    //有孩子账号则循环显示孩子账号和查看该孩子成绩按钮
                   for (User student : studentWithGuardian){
             %>
                 <div class="stuContent">

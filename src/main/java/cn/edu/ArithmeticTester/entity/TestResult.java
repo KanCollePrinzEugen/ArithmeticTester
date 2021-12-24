@@ -4,6 +4,13 @@ package cn.edu.ArithmeticTester.entity;
  * @author prinzeugen
  */
 public class TestResult {
+    /**
+     * id: 练习记录的唯一ID
+     * forumNum: 练习总题数
+     * mistake: 练习错题数
+     * accuracy: 练习正确率
+     * studentName: 练习者账户名
+     */
     int id;
     int forumNum;
     int mistake;

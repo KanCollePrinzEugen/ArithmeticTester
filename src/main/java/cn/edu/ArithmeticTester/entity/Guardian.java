@@ -6,7 +6,7 @@ package cn.edu.ArithmeticTester.entity;
  */
 public class Guardian extends User{
 
-    public Guardian(String username, String name, int password) {
+    public Guardian(String username, String name, String password) {
         super(username, name, password);
     }
 }

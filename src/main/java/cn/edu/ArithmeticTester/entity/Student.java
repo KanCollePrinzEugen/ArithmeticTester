@@ -7,7 +7,7 @@ package cn.edu.ArithmeticTester.entity;
 public class Student extends User{
     String guardian;
 
-    public Student(String username, String name, int password, String guardian) {
+    public Student(String username, String name, String password, String guardian) {
         super(username, name, password);
         this. guardian = guardian;
     }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 家长端的Dao类
  * @author prinz
  */
 public class GuardianDaoImpl implements UserDao{
@@ -32,8 +33,7 @@ public class GuardianDaoImpl implements UserDao{
             if (resultSet.next()){
                 String getUser = resultSet.getString(1);
                 String getName = resultSet.getString(2);
-                int getPassword = resultSet.getInt(3);
-
+                String getPassword = resultSet.getString(3);
                 return new Guardian(getUser, getName, getPassword);
             } else {
                 //无法获取返回空值
@@ -55,6 +55,7 @@ public class GuardianDaoImpl implements UserDao{
             //执行添加语句
             String sql = "INSERT INTO guardian VALUES('"+user+"', '"+name+"', '"+password+"')";
             System.out.println(sql);
+            //返回结果
             return statement.executeUpdate(sql);
         } catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
@@ -62,6 +63,15 @@ public class GuardianDaoImpl implements UserDao{
         return 0;
     }
 
+    /**
+     * 仅用于学生账户，在家长Dao类不使用
+     * @param user  识别学员用户的唯一用户名
+     * @param name  学员姓名（可以重名）
+     * @param password  学员用户密码
+     * @param guardianUser  用于验证家长账户的家长用户名
+     * @param guardianPassword  对应的家长用户密码
+     * @return 0
+     */
     @Override
     public int addUserWithGuardian(String user, String name,String password, String guardianUser, String guardianPassword) {
         return 0;
@@ -74,21 +84,24 @@ public class GuardianDaoImpl implements UserDao{
             Class.forName(DataBaseTools.DRIVER_CLASS);
             connection = DriverManager.getConnection(DataBaseTools.CONNECT_STR, DataBaseTools.USER, DataBaseTools.PASSWORD);
             statement = connection.createStatement();
-            /*执行学生查询语句*/
+            /*执行家长账户绑定的学生账户的查询语句*/
             String sqlSt = "SELECT * FROM child WHERE guardian = '"+guardian+"' ";
             resultSet = statement.executeQuery(sqlSt);
             System.out.println(sqlSt);
             ArrayList<User> studentList = new ArrayList();
+            //没有找到绑定的学生账户返回null
             if (!resultSet.next()){
                 return null;
             }
+            //包装得到的学生类
             do{
                 String studentUserName = resultSet.getString(1);
                 String studentName = resultSet.getString(2);
-                int studentPassword = resultSet.getInt(3);
+                String studentPassword = resultSet.getString(3);
                 String guardianUser = guardian;
 
                 Student student = new Student(studentUserName, studentName, studentPassword, guardianUser);
+                //添加进学生列表
                 studentList.add(student);
             }while(resultSet.next());
             return studentList;
